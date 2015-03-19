@@ -1,6 +1,8 @@
 import random
 import os
 import re
+import sys
+import datetime
 import tweepy
 
 
@@ -25,11 +27,8 @@ def create_insult(usernames=None):
         insult = "Your {noun} is {adjective}. #marchmadnesstrashtalk".format(noun=noun,adjective=adj)
     return insult
 
-def get_mentions(api,last_id):
-    if last_id:
-        mentions = api.mentions_timeline(since_id=last_id)
-    else:
-        mentions = api.mentions_timeline()
+def get_mentions(api):
+    mentions = api.mentions_timeline(count=50)
     return mentions
 
 def get_usernames(tweet,botname):
@@ -37,6 +36,10 @@ def get_usernames(tweet,botname):
     usernames.remove(botname)
     return usernames
 
+
+minutes_since_last_run = int(sys.argv[1])
+now = datetime.datetime.utcnow()
+time_of_last_run = now - datetime.timedelta(minutes=minutes_since_last_run)
 
 CONSUMER_KEY = os.environ.get("CONSUMER_KEY")
 CONSUMER_SECRET = os.environ.get("CONSUMER_SECRET")
@@ -48,10 +51,9 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-with open("last_tweet_file.txt",'r') as f:
-    last_mention_id = f.read()
 
-mentions = get_mentions(api,last_mention_id)
+
+mentions = get_mentions(api)
 mention_ids = []
 for m in mentions:
     username = m.author.screen_name
@@ -60,15 +62,14 @@ for m in mentions:
     all_names = get_usernames(m.text,"@trashtalkbot")
     all_names.insert(0,"@"+username)
     usernames = " ".join(all_names)
+    tweet_create_time = m.created_at
 
     insult = create_insult(usernames)
 
     #prevents tweeting if there's no start time
     #to prevent repeated spamming
-    if last_mention_id:  
+    if tweet_create_time > time_of_last_run:
+        print tweet_create_time
+        print time_of_last_run
         api.update_status(status = insult, in_reply_to_status_id=mention_id)
 
-if len(mention_ids) > 0:
-    new_id = str(max(mention_ids))
-    with open("last_tweet_file.txt",'w') as f:
-        f.write(new_id)
