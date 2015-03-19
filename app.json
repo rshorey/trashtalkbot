@@ -1,0 +1,24 @@
+{
+  "name": "TrashTalkBot",
+  "description": "Trash talkin' twitter bot",
+  "repository": "https://github.com/rshorey/trashtalkbot",
+  "env": {
+    "CONSUMER_KEY":{
+        "description":"from twitter",
+        "required":true
+        },
+    "CONSUMER_SECRET":{
+        "description":"from twitter",
+        "required":true
+        },
+    "ACCESS_KEY":{
+        "description":"from twitter",
+        "required":true
+        },
+    "ACCESS_SECRET":{
+        "description":"from twitter",
+        "required":true
+    }
+
+  }
+}
