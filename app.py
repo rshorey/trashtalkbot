@@ -9,15 +9,18 @@ import tweepy
 def create_insult(usernames=None):
     nouns = ["team","bracket",
         "strategy","free throw percent",
-        "point guard","mascot","t-shirt cannon","coach"]
+        "point guard","mascot","t-shirt cannon","coach",
+        "basketball","curtain of distraction"]
 
-    adjectives = ["stinky","small","hackable",
+    adjectives = ["stinky","hackable",
                     "dastardly","Machiavellian",
                     "irresponsible","serpentine",
-                    "deflated","a loser","going down",
+                    "deflated","underwater",
                     "doomed","flat-footed","pseudorandom",
-                    "outside the margin of error","full of eels",
-                    "a hamster"]
+                    "outside the margin of error",
+                    "full of eels","a hamster",
+                    "the worst","incredibly creepy",
+                    "substandard","chopped liver"]
 
     noun = random.choice(nouns)
     adj = random.choice(adjectives)
@@ -69,7 +72,4 @@ for m in mentions:
     #prevents tweeting if there's no start time
     #to prevent repeated spamming
     if tweet_create_time > time_of_last_run:
-        print tweet_create_time
-        print time_of_last_run
         api.update_status(status = insult, in_reply_to_status_id=mention_id)
-
