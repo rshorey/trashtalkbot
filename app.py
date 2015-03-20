@@ -73,3 +73,8 @@ for m in mentions:
     #to prevent repeated spamming
     if tweet_create_time > time_of_last_run:
         api.update_status(status = insult, in_reply_to_status_id=mention_id)
+
+if random.random() < .05:
+    #randomly insult no one one out of 20 times
+    insult = create_insult()
+    api.update_status(status=insult)
