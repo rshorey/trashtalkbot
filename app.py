@@ -25,9 +25,9 @@ def create_insult(usernames=None):
     noun = random.choice(nouns)
     adj = random.choice(adjectives)
     if usernames:
-        insult = "{names}, your {noun} is {adjective}. #marchmadnesstrashtalk".format(names=usernames,noun=noun,adjective=adj)
+        insult = "{names}, your {noun} is {adjective}. #marchmadness #trashtalk".format(names=usernames,noun=noun,adjective=adj)
     else:
-        insult = "Your {noun} is {adjective}. #marchmadnesstrashtalk".format(noun=noun,adjective=adj)
+        insult = "Your {noun} is {adjective}. #marchmadness #trashtalk".format(noun=noun,adjective=adj)
     return insult
 
 def get_mentions(api):
