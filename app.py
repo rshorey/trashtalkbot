@@ -12,15 +12,15 @@ def create_insult(usernames=None):
         "point guard","mascot","t-shirt cannon","coach",
         "basketball","curtain of distraction"]
 
-    adjectives = ["stinky","hackable",
-                    "dastardly","Machiavellian",
-                    "irresponsible","serpentine",
-                    "deflated","underwater",
-                    "doomed","flat-footed","pseudorandom",
+    adjectives = ["stinky",
+                    "dastardly","Machiavellian","serpentine",
+                    "deflated","underwater","pseudorandom",
                     "outside the margin of error",
                     "full of eels","a hamster",
                     "the worst","incredibly creepy",
-                    "substandard","chopped liver"]
+                    "chopped liver",
+                    "a rampallion","a pile of deceased ferrets",
+                    "a scurvy landlubber", "as loathsome as a toad"]
 
     noun = random.choice(nouns)
     adj = random.choice(adjectives)
