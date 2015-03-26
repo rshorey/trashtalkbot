@@ -32,7 +32,9 @@ def create_insult(usernames=None):
                     "a rotten banana",
                     "temporarily out of service",
                     "kaput",
-                    "a package of poorly aged cheese"]
+                    "a package of improperly aged cheese",
+                    "rotten in the state of Denmark",
+                    "not going to space today"]
 
     noun = random.choice(nouns)
     adj = random.choice(adjectives)
