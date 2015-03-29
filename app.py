@@ -54,7 +54,7 @@ def get_mentions(api):
     return mentions
 
 def get_usernames(tweet,botname):
-    usernames = re.findall(r'@[a-zA-Z0-9_]*',tweet)
+    usernames = [u.lower() for  u in re.findall(r'@[a-zA-Z0-9_]*',tweet)]
     usernames.remove(botname)
     return usernames
 
@@ -77,21 +77,23 @@ api = tweepy.API(auth)
 
 mentions = get_mentions(api)
 mention_ids = []
+botname = "@trashtalkbot"
 for m in mentions:
     username = m.author.screen_name
-    mention_id = m.id
-    mention_ids.append(m.id)
-    all_names = get_usernames(m.text,"@trashtalkbot")
-    all_names.insert(0,"@"+username)
-    usernames = " ".join(all_names)
-    tweet_create_time = m.created_at
+    if username.lower() != botname:
+        mention_id = m.id
+        mention_ids.append(m.id)
+        all_names = get_usernames(m.text,botname)
+        all_names.insert(0,"@"+username)
+        usernames = " ".join(all_names)
+        tweet_create_time = m.created_at
 
-    insult = create_insult(usernames)
+        insult = create_insult(usernames)
 
-    #prevents tweeting if there's no start time
-    #to prevent repeated spamming
-    if tweet_create_time > time_of_last_run:
-        api.update_status(status = insult, in_reply_to_status_id=mention_id)
+        #prevents tweeting if there's no start time
+        #to prevent repeated spamming
+        if tweet_create_time > time_of_last_run:
+            api.update_status(status = insult, in_reply_to_status_id=mention_id)
 
 if random.random() < .07:
     #randomly insult no one one out of 20 times
