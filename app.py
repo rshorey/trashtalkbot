@@ -10,7 +10,7 @@ def create_insult(usernames=None):
     nouns = ["team","bracket",
         "strategy","free throw percent",
         "point guard","mascot","t-shirt cannon","coach",
-        "basketball","curtain of distraction",
+        "basketball",
         "shot clock","pair of tube socks",
         "ability to jump","dribble"]
 
@@ -23,7 +23,6 @@ def create_insult(usernames=None):
                     "full of eels",
                     "a hamster",
                     "the worst",
-                    "incredibly creepy",
                     "chopped liver",
                     "a rampallion",
                     "a pile of deceased ferrets",
@@ -35,11 +34,14 @@ def create_insult(usernames=None):
                     "a shipment of improperly aged cheese",
                     "rotten in the state of Denmark",
                     "not going to space today",
-                    "undribblable",
                     "tripe",
                     "jello",
                     "a load of malarkey",
-                    "so 1999"]
+                    "so 1999",
+                    "puce",
+                    "actually 3 kindergarteners in a trenchcoat",
+                    "Kafkaesque",
+                    "not statistically significant"]
 
     noun = random.choice(nouns)
     adj = random.choice(adjectives)
