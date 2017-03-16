@@ -100,7 +100,7 @@ for m in mentions:
         if tweet_create_time > time_of_last_run:
             api.update_status(status = insult, in_reply_to_status_id=mention_id)
 
-if random.random() < .07:
-    #randomly insult no one one out of 20 times
+if random.random() < .2:
+    #randomly insult no one one out of 5 times
     insult = create_insult()
     api.update_status(status=insult)
