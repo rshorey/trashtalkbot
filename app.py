@@ -41,7 +41,10 @@ def create_insult(usernames=None):
                     "puce",
                     "actually 3 kindergarteners in a trenchcoat",
                     "Kafkaesque",
-                    "not statistically significant"]
+                    "not statistically significant",
+                    "SAD",
+                    "fake news",
+                    ]
 
     noun = random.choice(nouns)
     adj = random.choice(adjectives)
