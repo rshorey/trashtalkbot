@@ -60,7 +60,8 @@ def get_mentions(api):
 
 def get_usernames(tweet,botname):
     usernames = [u.lower() for  u in re.findall(r'@[a-zA-Z0-9_]*',tweet)]
-    usernames.remove(botname)
+    if botname in usernames:
+        usernames.remove(botname)
     return usernames
 
 
