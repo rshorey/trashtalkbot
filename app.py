@@ -44,7 +44,8 @@ def create_insult(usernames=None):
                     "not statistically significant",
                     "SAD",
                     "fake news",
-                    "under investigation by the FBI"
+                    "under investigation by the FBI",
+                    "zeroed out in the budged"
                     ]
 
     noun = random.choice(nouns)
