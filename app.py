@@ -45,7 +45,7 @@ def create_insult(usernames=None):
                     "SAD",
                     "fake news",
                     "under investigation by the FBI",
-                    "zeroed out in the budged"
+                    "zeroed out in the budget"
                     ]
 
     noun = random.choice(nouns)
